@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Delete{% endblock title %}
+
+{% block content %}
+<section class="container">
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete the book "{{ book.title }}" by {{ book.author }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'detail' book.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</section>
+{% endblock content %}

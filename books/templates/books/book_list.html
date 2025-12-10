@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Book List{% endblock title %}
+
+{% block content %}
+<section class="container">
+    <table class="table table-hover table-striped-columns ">
+    <thead>
+        <tr>
+        <th scope="col">Idx</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Remark</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author | truncatechars:50 }}</td>
+        <td>
+            <a href="{% url "detail" book.pk %}" class='btn btn-outline-success'>Details</a>
+        </td>
+        </tr>
+       
+        {% endfor %}
+    </tbody>
+    </table>
+</section>
+
+{% endblock content %}

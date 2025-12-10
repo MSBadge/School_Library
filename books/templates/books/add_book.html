@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Add Book{% endblock title %}
+
+{% block content %}
+<section class="container">
+    <h1 class="my-4">Add a New Book</h1>
+    <div class="col-md-6">
+        <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}    
+    <!-- Title Field -->
+    <div class="mb-3">
+        <label for="id_title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" maxlength="200" required id="id_title">
+        <div class="invalid-feedback">
+            Please enter a title.
+        </div>
+    </div>
+
+    <!-- Author Field -->
+    <div class="mb-3">
+        <label for="id_author" class="form-label">Author</label>
+        <input type="text" class="form-control" name="author" maxlength="200" required id="id_author">
+        <div class="invalid-feedback">
+            Please enter an author.
+        </div>
+    </div>
+
+    <!-- Description Field -->
+    <div class="mb-3">
+        <label for="id_description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" cols="40" rows="5" required id="id_description"></textarea>
+        <div class="invalid-feedback">
+            Please enter a description.
+        </div>
+    </div>
+
+    <!-- Genre Field -->
+    <div class="mb-3">
+        <label for="id_genre" class="form-label">Genre</label>
+        <select class="form-select" name="genre" required id="id_genre">
+            <option value="" selected disabled>Select a genre</option>
+            <option value="fiction">Fiction</option>
+            <option value="non_fiction">Non-Fiction</option>
+            <option value="science">Science</option>
+            <option value="technology">Technology</option>
+            <option value="history">History</option>
+            <option value="other">Other</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a genre.
+        </div>
+    </div>
+
+    <!-- ISBN Field -->
+    <div class="mb-3">
+        <label for="id_isbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" name="isbn" maxlength="13" required id="id_isbn">
+        <div class="invalid-feedback">
+            Please enter a valid ISBN.
+        </div>
+    </div>
+
+    <!-- Publication Date Field -->
+    <div class="mb-3">
+        <label for="id_publication_date" class="form-label">Publication Date</label>
+        <input type="date" class="form-control" name="publication_date" required id="id_publication_date">
+        <div class="invalid-feedback">
+            Please enter a publication date.
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+<script>
+// Bootstrap form validation
+(function () {
+    'use strict'
+    
+    var forms = document.querySelectorAll('.needs-validation')
+    
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+</script>
+    </div>
+
+</section>
+
+{% endblock content %}

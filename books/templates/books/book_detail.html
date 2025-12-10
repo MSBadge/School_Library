@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Book List{% endblock title %}
+
+{% block content %}
+<section class="container">
+    <h2>Book Detail</h2>
+    <ul class="list-group col-6 mb-3">
+        <li class="list-group-item"><strong>Title:</strong> {{ book.title }}</li>
+        <li class="list-group-item"><strong>Author:</strong> {{ book.author }}</li>
+        <li class="list-group-item"><strong>Published Date:</strong> {{ book.publication_date }}</li>
+        <li class="list-group-item"><strong>ISBN:</strong> {{ book.isbn }}</li>
+        <li class="list-group-item"><strong>Description:</strong> {{ book.description }}</li>
+    </ul>
+    <a href="{% url "edit" book.pk %}" class='btn btn-outline-primary'>Edit</a>
+    <a href="{% url "delete" book.pk %}" class='btn btn-outline-danger'>Delete</a>
+
+</section>
+
+{% endblock content %}
